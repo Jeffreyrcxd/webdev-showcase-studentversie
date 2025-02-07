@@ -21,9 +21,9 @@
 
 .person-logo {
     border: 4px solid black;
-    border-radius: 50%;
     margin: 15px 0px 15px 0px;
-    width: 20%;
+    border-radius: 50%;
+    width: 50%;
     animation: glow 3s ease alternate;
 }
 
@@ -106,3 +106,42 @@
 
 
 /*student uitwerking*/
+/* Make sure that padding behaves as expected */
+* {
+    box-sizing: border-box
+}
+
+/* Container for skill bars */
+.container {
+    width: 100%; /* Full width */
+    background-color: #ddd; /* Grey background */
+    padding: 0;
+}
+
+.skills {
+    text-align: right; /* Right-align text */
+    padding-top: 10px; /* Add top padding */
+    padding-bottom: 10px; /* Add bottom padding */
+    color: white; /* White text color */
+}
+
+.html {
+    width: 90%;
+    background-color: #04AA6D;
+}
+/* Green */
+.css {
+    width: 80%;
+    background-color: #2196F3;
+}
+/* Blue */
+.js {
+    width: 65%;
+    background-color: #f44336;
+}
+/* Red */
+.cs {
+    width: 60%;
+    background-color: #808080;
+}
+/* Dark Grey */
