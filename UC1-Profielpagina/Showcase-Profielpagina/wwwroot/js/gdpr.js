@@ -10,12 +10,18 @@ class GDPR {
 
     bindEvents() {
         let buttonAccept = document.querySelector('.gdpr-consent__button--accept');
+        let buttonReject = document.querySelector('.gdpr-consent__button--reject');
+
         buttonAccept.addEventListener('click', () => {
             this.cookieStatus('accept');
             this.showStatus();
             this.showContent();
             this.hideGDPR();
         });
+
+        buttonReject.addEventListener('click', () => {
+            
+        })
 
 
 //student uitwerking
