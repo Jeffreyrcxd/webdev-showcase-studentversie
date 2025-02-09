@@ -1,11 +1,13 @@
 class GDPR {
 
     constructor() {
+        const status = this.cookieStatus();
         this.showStatus();
         this.showContent();
+        if (!(status === 'accept' || status === 'reject')) {
+            this.showGDPR();
+        }
         this.bindEvents();
-
-        if(this.cookieStatus() !== 'accept') this.showGDPR();
     }
 
     bindEvents() {
@@ -14,19 +16,19 @@ class GDPR {
 
         buttonAccept.addEventListener('click', () => {
             this.cookieStatus('accept');
-            this.showStatus();
-            this.showContent();
-            this.hideGDPR();
+            this.updateUI();
         });
 
         buttonReject.addEventListener('click', () => {
-            
+            this.cookieStatus('reject');
+            this.updateUI();
         })
+    }
 
-
-//student uitwerking
-
-
+    updateUI() {
+        this.showStatus();
+        this.showContent();
+        this.hideGDPR();
     }
 
     showContent() {
@@ -34,49 +36,76 @@ class GDPR {
         const status = this.cookieStatus() == null ? 'not-chosen' : this.cookieStatus();
         const element = document.querySelector(`.content-gdpr-${status}`);
         element.classList.add('show');
-
     }
 
-    resetContent(){
+    resetContent() {
         const classes = [
             '.content-gdpr-accept',
-
-//student uitwerking
-
+            '.content-gdpr-reject',
             '.content-gdpr-not-chosen'];
 
-        for(const c of classes){
+        for (const c of classes) {
             document.querySelector(c).classList.add('hide');
             document.querySelector(c).classList.remove('show');
         }
     }
 
     showStatus() {
-        document.getElementById('content-gpdr-consent-status').innerHTML =
+        document.getElementById('content-gdpr-consent-status').innerHTML =/*
+        showStatus() {
+            const statusElement = document.getElementById('content-gdpr-consent-status');
+            if (statusElement) {
+                statusElement.innerHTML = 'Your status message here';
+            } else {
+                console.error('Element with ID content-gdpr-consent-status not found');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const gdpr = new GDPR();
+        });*/
             this.cookieStatus() == null ? 'Niet gekozen' : this.cookieStatus();
     }
 
     cookieStatus(status) {
-
-        if (status) localStorage.setItem('gdpr-consent-choice', status);
-
-//student uitwerking
-
-        return localStorage.getItem('gdpr-consent-choice');
+        if (status) this.saveConsent(status);
+        return this.getConsent();
     }
 
-//student uitwerking
+    getConsent() {
+        let consentData = localStorage.getItem("gdpr-consent");
+        if (consentData) {
+            let consentObject = JSON.parse(consentData);
+            return consentObject.choice;
+        }
+        return null;
+    }
 
-
-    hideGDPR(){
+    hideGDPR() {
         document.querySelector(`.gdpr-consent`).classList.add('hide');
         document.querySelector(`.gdpr-consent`).classList.remove('show');
     }
 
-    showGDPR(){
+    showGDPR() {
         document.querySelector(`.gdpr-consent`).classList.add('show');
     }
 
+    saveConsent(status) {
+        const date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth() + 1; //getMonth function range 0-11 so have to add 1
+        var year = date.getFullYear();
+
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+
+        let consentObject = {
+            choice: status,
+            date: `${day}-${month}-${year}`,
+            time: `${hours}:${minutes}`
+        };
+
+        localStorage.setItem("gdpr-consent", JSON.stringify(consentObject));
+    }
 }
 
 const gdpr = new GDPR();
