@@ -51,18 +51,7 @@ class GDPR {
     }
 
     showStatus() {
-        document.getElementById('content-gdpr-consent-status').innerHTML =/*
-        showStatus() {
-            const statusElement = document.getElementById('content-gdpr-consent-status');
-            if (statusElement) {
-                statusElement.innerHTML = 'Your status message here';
-            } else {
-                console.error('Element with ID content-gdpr-consent-status not found');
-            }
-        }
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const gdpr = new GDPR();
-        });*/
+        document.getElementById('content-gdpr-consent-status').innerHTML =
             this.cookieStatus() == null ? 'Niet gekozen' : this.cookieStatus();
     }
 
