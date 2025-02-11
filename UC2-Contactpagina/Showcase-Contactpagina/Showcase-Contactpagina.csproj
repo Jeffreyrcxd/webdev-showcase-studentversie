@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\classic-cars.jpg" />
+    <None Include="wwwroot\images\it-er.png" />
+    <None Include="wwwroot\images\padel.jfif" />
+    <None Include="wwwroot\images\person-pasfoto.png" />
+    <None Include="wwwroot\images\profile-picture.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
