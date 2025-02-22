@@ -11,35 +11,35 @@
 <div class="page">
     <section class="contact">
 
-        <h1>Contact</h1>
-        <p>@ViewBag.Message</p>
-        <form method="post" class="form-contactpagina">
+        @* <h1>Contact</h1> *@
+        @* <p>@ViewBag.Message</p> *@
+        @* <form method="post" class="form-contactpagina"> *@
 
-            <div class="form-contactpagina__inputelement fx-col">
-                <label for="firstname">Voornaam: </label>
-                <input type="text" asp-for="FirstName" name="firstname" id="firstname" required>
-            </div>
+        @*     <div class="form-contactpagina__inputelement fx-col"> *@
+        @*         <label for="firstname">Voornaam: </label> *@
+        @*         <input type="text" asp-for="FirstName" name="firstname" id="firstname" required> *@
+        @*     </div> *@
 
-            <div class="form-contactpagina__inputelement fx-col">
-                <label for="lastname">Achternaam: </label>
-                <input type="text" asp-for="LastName" name="lastname" id="lastname" required>
-            </div>
+        @*     <div class="form-contactpagina__inputelement fx-col"> *@
+        @*         <label for="lastname">Achternaam: </label> *@
+        @*         <input type="text" asp-for="LastName" name="lastname" id="lastname" required> *@
+        @*     </div> *@
 
-            <div class="form-contactpagina__inputelement fx-col">
-                <label for="email">E-mailadres: </label>
-                <input type="email" asp-for="Email" name="email" id="email">
-            </div>
+        @*     <div class="form-contactpagina__inputelement fx-col"> *@
+        @*         <label for="email">E-mailadres: </label> *@
+        @*         <input type="email" asp-for="Email" name="email" id="email"> *@
+        @*     </div> *@
 
-            <div class="form-contactpagina__inputelement fx-col">
-                <label for="phone">Telefoonnummer: </label>
-                <input type="tel" asp-for="Phone" name="phone" id="phone">
-            </div>
+        @*     <div class="form-contactpagina__inputelement fx-col"> *@
+        @*         <label for="phone">Telefoonnummer: </label> *@
+        @*         <input type="tel" asp-for="Phone" name="phone" id="phone"> *@
+        @*     </div> *@
 
-            <div class="form-contactpagina__inputelement">
-                <input type="submit" value="Verstuur!">
-            </div>
+        @*     <div class="form-contactpagina__inputelement"> *@
+        @*         <input type="submit" value="Verstuur!"> *@
+        @*     </div> *@
 
-        </form>
+        @* </form> *@
 
         @* vanaf hier temp *@
         <div class="text-center">
@@ -53,8 +53,13 @@
 
             <label for="message">Message:</label>
             <textarea name="message" id="name" cols="30" rows="5" required></textarea>
+            @* old public key *@
+            @* 6LfPm90qAAAAAB5Whqeq9uCxU49Bc6Y_rUaLpAuP *@
 
-            <div class="g-recaptcha" data-sitekey="6LfPm90qAAAAAB5Whqeq9uCxU49Bc6Y_rUaLpAuP"></div>
+            @* new private key *@
+            @* 6LcXVd8qAAAAAKmpu25LPMYwlFZQ4jrFUDi-m5WS *@
+
+            <div class="g-recaptcha" data-sitekey="6LcXVd8qAAAAALw6XieFFmiC_J1aWOXAu-zCAAXr"></div>
 
             <button type="submit">Submit</button>
         </form>

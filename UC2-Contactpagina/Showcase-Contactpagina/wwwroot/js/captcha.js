@@ -1,7 +1,7 @@
 ﻿const form = document.querySelector('form');
 
-console.log("jiajia");
 form.addEventListener('submit', (e) => {
+    console.log("jiajia");
     e.preventDefault();
 
     const captchaResponse = grecaptcha.getResponse();
