@@ -2,6 +2,11 @@
 @{
     ViewData["Title"] = "Contactpagina";
 }
+@* dit ook temp *@
+<head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+@* tot hier temp *@
 
 <div class="page">
     <section class="contact">
@@ -35,6 +40,27 @@
             </div>
 
         </form>
+
+        @* vanaf hier temp *@
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>
+
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required />
+
+            <label for="message">Message:</label>
+            <textarea name="message" id="name" cols="30" rows="5" required></textarea>
+
+            <div class="g-recaptcha" data-sitekey="6LfPm90qAAAAAB5Whqeq9uCxU49Bc6Y_rUaLpAuP"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <script src="~/js/captcha.js"></script>
+        @* temp tot hier *@
 
     </section>
 
