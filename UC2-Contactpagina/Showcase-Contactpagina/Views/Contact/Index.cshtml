@@ -2,74 +2,58 @@
 @{
     ViewData["Title"] = "Contactpagina";
 }
-@* dit ook temp *@
+
 <head>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="/css/spinner.css" />
 </head>
-@* tot hier temp *@
 
 <div class="page">
     <section class="contact">
 
-        @* <h1>Contact</h1> *@
-        @* <p>@ViewBag.Message</p> *@
-        @* <form method="post" class="form-contactpagina"> *@
+        <h1>Contact</h1>
+        <p>ViewBag.Message</p>
+        <form asp-action="Index" method="post" class="form-contactpagina">
 
-        @*     <div class="form-contactpagina__inputelement fx-col"> *@
-        @*         <label for="firstname">Voornaam: </label> *@
-        @*         <input type="text" asp-for="FirstName" name="firstname" id="firstname" required> *@
-        @*     </div> *@
+            <div id="contactForm" class="form-contactpagina__inputelement fx-col">
+                <label for="firstname">Voornaam: </label>
+                <input type="text" asp-for="FirstName" name="firstname" id="firstname" required>
+            </div>
 
-        @*     <div class="form-contactpagina__inputelement fx-col"> *@
-        @*         <label for="lastname">Achternaam: </label> *@
-        @*         <input type="text" asp-for="LastName" name="lastname" id="lastname" required> *@
-        @*     </div> *@
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="lastname">Achternaam: </label>
+                <input type="lastname" asp-for="LastName" name="lastname" id="lastname">
+            </div>
 
-        @*     <div class="form-contactpagina__inputelement fx-col"> *@
-        @*         <label for="email">E-mailadres: </label> *@
-        @*         <input type="email" asp-for="Email" name="email" id="email"> *@
-        @*     </div> *@
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="email">Email: </label>
+                <input type="email" asp-for="Email" name="email" id="email">
+            </div>
 
-        @*     <div class="form-contactpagina__inputelement fx-col"> *@
-        @*         <label for="phone">Telefoonnummer: </label> *@
-        @*         <input type="tel" asp-for="Phone" name="phone" id="phone"> *@
-        @*     </div> *@
-
-        @*     <div class="form-contactpagina__inputelement"> *@
-        @*         <input type="submit" value="Verstuur!"> *@
-        @*     </div> *@
-
-        @* </form> *@
-
-        @* vanaf hier temp *@
-        <div class="text-center">
-            <h1 class="display-4">Welcome</h1>
-            <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        </div>
-
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required />
-
-            <label for="message">Message:</label>
-            <textarea name="message" id="name" cols="30" rows="5" required></textarea>
-            @* old public key *@
-            @* 6LfPm90qAAAAAB5Whqeq9uCxU49Bc6Y_rUaLpAuP *@
-
-            @* new private key *@
-            @* 6LcXVd8qAAAAAKmpu25LPMYwlFZQ4jrFUDi-m5WS *@
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="phone">Telefoonnummer: </label>
+                <input type="tel" asp-for="Phone" name="phone" id="phone">
+            </div>
 
             <div class="g-recaptcha" data-sitekey="6LcXVd8qAAAAALw6XieFFmiC_J1aWOXAu-zCAAXr"></div>
 
-            <button type="submit">Submit</button>
-        </form>
+            <div class="form-contactpagina__inputelement">
+                <input type="submit" value="Verstuur!">
+            </div>
 
+            <!-- Spinner -->
+            <div id="spinner" class="spinner" style="display: none;"></div>
+
+        </form>
         <script src="~/js/captcha.js"></script>
-        @* temp tot hier *@
+        <script>
+            let spinner = document.getElementById("spinner");
+            spinner.style.display = "block";
+        </script>
 
     </section>
 
-    <h1 id="content-gdpr-consent-status"></h1>
+@*     <h1 id="content-gdpr-consent-status"></h1>
 
     <div class="content-gdpr-not-chosen hide">
         <p>Deze content wordt alleen getoond als gdrp consent niet is gekozen.</p>
@@ -81,7 +65,7 @@
 
     <div class="content-gdpr-reject hide">
         <p>Deze content wordt alleen getoond als gdrp is verworpen.</p>
-    </div>
+    </div> *@
 
     <section class="gdpr-consent hide">
 
@@ -100,78 +84,56 @@
 </div>
 
 
-<script>
-//    const inputEmail = document.getElementById('email');
+
+@* <script>
+       const inputEmail = document.getElementById('email');
 
 
-//    const validateEmail = () => { 
-//        if (inputEmail.validity.typeMismatch) {
-//            inputEmail.setCustomValidity("Voer een geldig e-mailadres in!");
-//            inputEmail.reportValidity();
-//        } else if (inputEmail.value.length > 80) {
-//            inputEmail.setCustomValidity("Email moet niet langer dan 80 tekens zijn!");
-//        } else {
-//            inputEmail.setCustomValidity("");
-//        }
-//    }
+       const validateEmail = () => {
+           if (inputEmail.validity.typeMismatch) {
+               inputEmail.setCustomValidity("Voer een geldig e-mailadres in!");
+               inputEmail.reportValidity();
+           } else if (inputEmail.value.length > 10) {
+               inputEmail.setCustomValidity("Email moet niet langer dan 80 tekens zijn!");
+           } else {
+               inputEmail.setCustomValidity("");
+           }
+       }
 
-//    const validateForm = () => {
-//        validateEmail();
-//    }
+       const validateForm = () => {
+           validateEmail();
+       }
 
-//    // Event listener voor email
-//    // Aanbevolen events voor formulieren: https://github.com/Windesheim-HBO-ICT/client_studenten/blob/main/lessen/week-2/les-1/form-constraint-validation-api/studentversie/events-voor-invoer-validatie.md
-//    inputEmail.addEventListener("blur", validateEmail);
-//    inputEmail.addEventListener("input", validateEmail);
+       // Event listener voor email
+       // Aanbevolen events voor formulieren: https://github.com/Windesheim-HBO-ICT/client_studenten/blob/main/lessen/week-2/les-1/form-constraint-validation-api/studentversie/events-voor-invoer-validatie.md
+       inputEmail.addEventListener("blur", validateEmail);
+       inputEmail.addEventListener("input", validateEmail);
 
-//    // Selecteer het formelement
-//    const form = document.querySelector('.form-contactpagina');
+       // Selecteer het formelement
+       const form = document.querySelector('.form-contactpagina');
 
-//    // Event listener voor formulierinzending
-//    form.addEventListener('submit', function (event) {
-//        event.preventDefault(); // Voorkom standaard formulierinzending
+       // Event listener voor formulierinzending
+       form.addEventListener('submit', function (event) {
+           event.preventDefault(); // Voorkom standaard formulierinzending
 
-//       // Valideer alle velden voor de zekerheid
-//        validateForm();
+          // Valideer alle velden voor de zekerheid
+           validateForm();
 
-//        // Verkrijg CSRF-token van het formulier
-//        const csrfToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
+           // Verkrijg CSRF-token van het formulier
+           const csrfToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
-//        // Serialiseer formuliergegevens
-//        const formData = new URLSearchParams();
+           // Serialiseer formuliergegevens
+                   // Optioneel: je kunt hier een redirect uitvoeren of een succesbericht tonen
+               })
+               .catch(error => {
+                   console.error('Er was een probleem met de formulierinzending:', error);
 
-//        formData.append('email', form.email.value);
-        
-//        formData.append('__RequestVerificationToken', csrfToken); // Voeg CSRF-token toe
+                   alert(error.message)
 
-//        // Voer een POST-verzoek uit
-//        fetch('/contact', {
-//            method: 'POST',
-//            headers: {
-//                'Content-Type': 'application/x-www-form-urlencoded' // Stel de inhoudstype in
-//            },
-//            body: formData // Stuur de geserialiseerde formuliergegevens als de body
-//        })
-//            .then(response => {
-//                if (!response.ok) {
-//                    throw new Error('Netwerkrespons was niet ok');
-//                }
-//                return response.text();
-//            })
-//            .then(data => {
-//                // Verwerk succesvolle formulierinzending
-//                console.log('Formulier succesvol ingediend:', data);
-//                // Optioneel: je kunt hier een redirect uitvoeren of een succesbericht tonen
-//            })
-//            .catch(error => {
-//                console.error('Er was een probleem met de formulierinzending:', error);
-
-//                alert(error.message)
-
-//                // Verwerk fouten hier
-//            });
-//    });
+                   // Verwerk fouten hier
+               });
+       });
 
 
 
-</script>
+</script> *@

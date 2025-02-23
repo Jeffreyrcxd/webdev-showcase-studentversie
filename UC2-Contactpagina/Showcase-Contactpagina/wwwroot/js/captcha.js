@@ -1,7 +1,6 @@
 ﻿const form = document.querySelector('form');
 
 form.addEventListener('submit', (e) => {
-    console.log("jiajia");
     e.preventDefault();
 
     const captchaResponse = grecaptcha.getResponse();
@@ -13,12 +12,20 @@ form.addEventListener('submit', (e) => {
     const fd = new FormData(e.target);
     const params = new URLSearchParams(fd);
 
-    fetch('https://httpbin.org/post', {
+    fetch('http://localhost:3000/upload', {
         method: "POST",
         body: params,
     })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log("Response data:", data);
+            if (data.captchaSuccess) {
+                console.log("Validation successful");
+            }
+            else {
+                console.log("Validation failed");
+            }
+        })
         .catch(err => console.error(err))
 
 });

@@ -2,8 +2,8 @@ class GDPR {
 
     constructor() {
         const status = this.cookieStatus();
-        this.showStatus();
-        this.showContent();
+        //this.showStatus();
+        //this.showContent();
         if (!(status === 'accept' || status === 'reject')) {
             this.showGDPR();
         }
@@ -26,8 +26,8 @@ class GDPR {
     }
 
     updateUI() {
-        this.showStatus();
-        this.showContent();
+        //this.showStatus();
+        //this.showContent();
         this.hideGDPR();
     }
 
@@ -50,10 +50,10 @@ class GDPR {
         }
     }
 
-    showStatus() {
+/*    showStatus() {
         document.getElementById('content-gdpr-consent-status').innerHTML =
             this.cookieStatus() == null ? 'Niet gekozen' : this.cookieStatus();
-    }
+    }*/
 
     cookieStatus(status) {
         if (status) this.saveConsent(status);
