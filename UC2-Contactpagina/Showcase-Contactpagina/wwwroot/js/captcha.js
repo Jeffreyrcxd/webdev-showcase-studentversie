@@ -25,7 +25,7 @@ form.addEventListener('submit', (e) => {
             console.log("Response data:", data);
             if (data.captchaSuccess) {
                 console.log("Validatie succesvol!");
-                form.submit(); // Handmatig verzenden als de captcha succesvol is
+                form.submit(); //submit want e.preventDefault blokkeert default
             } else {
                 console.log("Validatie mislukt!");
                 alert("Captcha validatie mislukt. Probeer opnieuw.");

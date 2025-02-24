@@ -27,13 +27,12 @@ namespace Showcase_Contactpagina.Controllers {
         public async Task<ActionResult> Index(Contactform form) {
             if (!ModelState.IsValid) {
                 ViewBag.Message = "De ingevulde velden voldoen niet aan de gestelde voorwaarden";
-                return View();
+                return View(form);
             }
 
             var settings = new JsonSerializerSettings {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
-
 
             var json = JsonConvert.SerializeObject(form, settings);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -42,13 +41,16 @@ namespace Showcase_Contactpagina.Controllers {
 
             if (!response.IsSuccessStatusCode) {
                 ViewBag.Message = "Er is iets fout gegaan!";
-
-                return View();
+                return View(form);
             }
 
-            ViewBag.Message = "Het contactformulier is verstuurd";
+            ViewBag.Message = "Het contactformulier is verstuurd!";
 
-            return View();
+            // modelstate clear voor velden legen
+            ModelState.Clear();
+
+            // nieuw formulier
+            return View(new Contactform());
         }
     }
 }

@@ -1,4 +1,22 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".form-contactpagina");
+    const submitButton = document.getElementById("submit-btn");
+    const spinner = document.getElementById("spinner");
 
-// Write your JavaScript code.
+    if (!form || !submitButton || !spinner) {
+        console.error("Formulier, knop of spinner niet gevonden!");
+        return;
+    }
+
+    form.addEventListener("submit", function () {
+        // Toon de spinner en disable de knop
+        spinner.style.display = "block";
+        submitButton.disabled = true;
+    });
+
+    // Controleer bij het laden van de pagina of de spinner moet verdwijnen
+    window.addEventListener("load", function () {
+        spinner.style.display = "none";
+        submitButton.disabled = false;
+    });
+});
