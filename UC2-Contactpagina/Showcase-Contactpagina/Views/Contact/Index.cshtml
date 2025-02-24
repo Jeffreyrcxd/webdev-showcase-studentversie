@@ -1,28 +1,28 @@
-﻿@model Contactform
+﻿@* @model Contactform
 @{
     ViewData["Title"] = "Contactpagina";
 }
 
 <head>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <link rel="stylesheet" href="/css/spinner.css" />
 </head>
 
 <div class="page">
     <section class="contact">
 
         <h1>Contact</h1>
-        <p>ViewBag.Message</p>
-        <form asp-action="Index" method="post" class="form-contactpagina">
+        <h2>Jeffrey Hu</h2>
+        <p>@ViewBag.Message</p>
+        <form method="post" class="form-contactpagina">
 
-            <div id="contactForm" class="form-contactpagina__inputelement fx-col">
+            <div class="form-contactpagina__inputelement fx-col">
                 <label for="firstname">Voornaam: </label>
                 <input type="text" asp-for="FirstName" name="firstname" id="firstname" required>
             </div>
 
             <div class="form-contactpagina__inputelement fx-col">
                 <label for="lastname">Achternaam: </label>
-                <input type="lastname" asp-for="LastName" name="lastname" id="lastname">
+                <input type="lastname" asp-for="LastName" name="lastname" id="lastname" required>
             </div>
 
             <div class="form-contactpagina__inputelement fx-col">
@@ -35,24 +35,30 @@
                 <input type="tel" asp-for="Phone" name="phone" id="phone">
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6LcXVd8qAAAAALw6XieFFmiC_J1aWOXAu-zCAAXr"></div>
-
-            <div class="form-contactpagina__inputelement">
-                <input type="submit" value="Verstuur!">
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="phone">Onderwerp: </label>
+                <input type="text" asp-for="Subject" name="subject" id="subject">
             </div>
 
-            <!-- Spinner -->
-            <div id="spinner" class="spinner" style="display: none;"></div>
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="phone">Bericht: </label>
+                <textarea type="text" asp-for="Message" name="message" id="message"></textarea>
+            </div> *@
 
+
+            <!-- captcha and public key -->
+@*             <div class="g-recaptcha" data-sitekey="6LcXVd8qAAAAALw6XieFFmiC_J1aWOXAu-zCAAXr"></div>
+
+            <div class="form-contactpagina__inputelement">
+                <input type="submit" id="submit_btn" value="Verstuur!">
+            </div>
         </form>
-        <script src="~/js/captcha.js"></script>
-        <script>
-            let spinner = document.getElementById("spinner");
-            spinner.style.display = "block";
-        </script>
+
 
     </section>
+</div>
 
+<script src="~/js/captcha.js"></script> *@
 @*     <h1 id="content-gdpr-consent-status"></h1>
 
     <div class="content-gdpr-not-chosen hide">
@@ -67,25 +73,25 @@
         <p>Deze content wordt alleen getoond als gdrp is verworpen.</p>
     </div> *@
 
-    <section class="gdpr-consent hide">
+@* <section class="gdpr-consent hide">
 
-        <div class="gdpr-consent__description">
-            <p>
-                Deze website gebruikt cookies.
-                We gebruiken cookies om content te personaliseren, voor social media en het analyseren
-                van verkeer op de website, advertenties.
-            </p>
-        </div>
+    <div class="gdpr-consent__description">
+        <p>
+            Deze website gebruikt cookies.
+            We gebruiken cookies om content te personaliseren, voor social media en het analyseren
+            van verkeer op de website, advertenties.
+        </p>
+    </div>
 
-        <div class="gdpr-consent__choice">
-            <button class="gdpr-consent__button--accept">Ja, natuurlijk</button>
-            <button class="gdpr-consent__button--reject">Neu, misschien later</button>
-        </div>
-</div>
+    <div class="gdpr-consent__choice">
+        <button class="gdpr-consent__button--accept">Ja, natuurlijk</button>
+        <button class="gdpr-consent__button--reject">Neu, misschien later</button>
+    </div>
+    </div> *@
 
 
 
-@* <script>
+    @* <script>
        const inputEmail = document.getElementById('email');
 
 
@@ -137,3 +143,60 @@
 
 
 </script> *@
+
+@model Contactform
+@{
+    ViewData["Title"] = "Contactpagina";
+}
+
+<div class="page">
+    <section class="contact">
+
+        <h1>Contact</h1>
+        <h2>Jeffrey Hu</h2>
+        <p>@ViewBag.Message</p>
+        <form method="post" class="form-contactpagina">
+
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="firstname">Voornaam: </label>
+                <input type="text" asp-for="FirstName" name="firstname" id="firstname" required>
+            </div>
+
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="lastname">Achternaam: </label>
+                <input type="text" asp-for="LastName" name="lastname" id="lastname" required>
+            </div>
+
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="email">E-mailadres: </label>
+                <input type="email" asp-for="Email" name="email" id="email">
+            </div>
+
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="phone">Telefoonnummer: </label>
+                <input type="tel" asp-for="Phone" name="phone" id="phone">
+            </div>
+            
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="subject">Onderwerp: </label>
+                <input type="text" asp-for="Subject" name="subject" id="subject">
+            </div>
+            
+            <div class="form-contactpagina__inputelement fx-col">
+                <label for="message">Bericht: </label>
+                <textarea type="text" asp-for="Message" name="message" id="message"></textarea>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LcXVd8qAAAAALw6XieFFmiC_J1aWOXAu-zCAAXr"></div>
+
+
+            <div class="form-contactpagina__inputelement">
+                <input type="submit" id="submit-btn" value="Verstuur!">
+            </div>
+
+        </form>
+        <script src="~/js/captcha.js"></script>
+
+    </section>
+</div>
+

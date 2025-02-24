@@ -21,6 +21,7 @@ app.post('/upload', function (req, res) {
     })
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             if (data.success) {
                 res.json({ captchaSuccess: true });
             } else {
